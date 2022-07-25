@@ -72,6 +72,14 @@ void AIceBoxPawn::MoveRight(float value)
 	}
 }
 
+void AIceBoxPawn::Push(FVector Direction)
+{
+	if (IceMovementComponent && (IceMovementComponent->UpdatedComponent == RootComponent))
+	{
+		IceMovementComponent->AddInputVector(Direction);
+	}
+}
+
 UPawnMovementComponent* AIceBoxPawn::GetMovementComponent() const
 {
 	return IceMovementComponent;

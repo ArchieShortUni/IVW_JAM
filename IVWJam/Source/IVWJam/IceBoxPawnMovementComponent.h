@@ -20,5 +20,5 @@ public:
 	float MaxMovementSpeed = 1000.f;
 	float FrictionConstant = 0.8f;
 	FVector CurrentVelocity = FVector(0.f,0.f,0.f); 
-	FVector CharacterGravity = FVector(0.f,0.f,-500.f);
+	FVector CharacterGravity = FVector(0.f,0.f,-5.f);
 };

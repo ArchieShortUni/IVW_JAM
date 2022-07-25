@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVWJam\\Source\\IVWJam\\IVWJam.Build.cs",
-		"C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVWJam\\Source\\IVWJam.Target.cs",
-		"C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVWJam\\Source\\IVWJamEditor.Target.cs"
+		"C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVW_JAM\\IVWJam\\Source\\IVWJam\\IVWJam.Build.cs",
+		"C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVW_JAM\\IVWJam\\Source\\IVWJam.Target.cs",
+		"C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVW_JAM\\IVWJam\\Source\\IVWJamEditor.Target.cs"
 	],
 	"EngineVersion": "4.27.2"
 }

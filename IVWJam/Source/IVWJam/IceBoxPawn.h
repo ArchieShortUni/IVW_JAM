@@ -43,11 +43,15 @@ public:
 
 	virtual UPawnMovementComponent* GetMovementComponent() const override;
 	
+	void Push(FVector Direction); 
+
+	
 private:
 	FVector MovementDirection;
 
 	
 	void MoveForward(float value);
 	void MoveRight(float value);
+
 	void Turn(float value);
 };

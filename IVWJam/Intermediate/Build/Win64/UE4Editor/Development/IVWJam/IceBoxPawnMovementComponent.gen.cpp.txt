@@ -1,7 +1,7 @@
-C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Development\IVWJam\Definitions.IVWJam.h
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVW_JAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Development\IVWJam\Definitions.IVWJam.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Source\IVWJam/IceBoxPawnMovementComponent.h
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVW_JAM\IVWJam\Source\IVWJam/IceBoxPawnMovementComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/PawnMovementComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/NavMovementComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\AI/Navigation/PathFollowingAgentInterface.h
@@ -10,4 +10,4 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFra
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\MovementComponent.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\NavMovementComponent.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\PawnMovementComponent.generated.h
-C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Inc\IVWJam\IceBoxPawnMovementComponent.generated.h
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVW_JAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Inc\IVWJam\IceBoxPawnMovementComponent.generated.h
