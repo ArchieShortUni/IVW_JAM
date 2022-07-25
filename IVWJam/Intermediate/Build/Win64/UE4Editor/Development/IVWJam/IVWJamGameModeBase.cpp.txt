@@ -1,0 +1,7 @@
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Development\IVWJam\Definitions.IVWJam.h
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Source\IVWJam\IVWJamGameModeBase.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Inc\IVWJam\IVWJamGameModeBase.generated.h

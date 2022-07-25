@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "IVWJam",
+			"Path": "C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVWJam\\Source\\IVWJam.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "IVWJamEditor",
+			"Path": "C:\\Users\\archi\\Documents\\GitHub\\ITSVERYWARMJAM\\IVWJam\\Source\\IVWJamEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

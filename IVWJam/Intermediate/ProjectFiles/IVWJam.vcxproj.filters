@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\IVWJam.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{5DEC6DA6-AFFB-40B4-A3BC-439A7E4433D3}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\IVWJam.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\IVWJamEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{5BD1B425-9ABD-4298-B244-1E176EC5951A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\IVWJam">
+      <UniqueIdentifier>{27961FD8-DD94-4770-834B-7B89107C1C14}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\IVWJam\IceBoxPawn.cpp">
+      <Filter>Source\IVWJam</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\IVWJam\IceBoxPawn.h">
+      <Filter>Source\IVWJam</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\IVWJam\IceBoxPawnMovementComponent.cpp">
+      <Filter>Source\IVWJam</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\IVWJam\IceBoxPawnMovementComponent.h">
+      <Filter>Source\IVWJam</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\IVWJam\IVWJam.Build.cs">
+      <Filter>Source\IVWJam</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\IVWJam\IVWJam.cpp">
+      <Filter>Source\IVWJam</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\IVWJam\IVWJam.h">
+      <Filter>Source\IVWJam</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\IVWJam\IVWJamGameModeBase.cpp">
+      <Filter>Source\IVWJam</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\IVWJam\IVWJamGameModeBase.h">
+      <Filter>Source\IVWJam</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

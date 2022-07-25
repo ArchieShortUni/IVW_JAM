@@ -1,0 +1,2 @@
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Intermediate\Build\Win64\UE4Editor\Development\IVWJam\Definitions.IVWJam.h
+C:\Users\archi\Documents\GitHub\ITSVERYWARMJAM\IVWJam\Source\IVWJam\IVWJam.h
