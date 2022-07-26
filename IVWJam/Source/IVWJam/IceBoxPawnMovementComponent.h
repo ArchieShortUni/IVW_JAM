@@ -15,10 +15,18 @@ class IVWJAM_API UIceBoxPawnMovementComponent : public UPawnMovementComponent
 public:
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 
-	UPROPERTY(EditAnywhere,Category="Movement Variables")
-	float MovementSpeed = 1.3f;
+	//Movement Variables
+	FVector CurrentVelocity = FVector(0.f,0.f,0.f);
+	
+	float CharacterAcceleration = 3.3f;
 	float MaxMovementSpeed = 1000.f;
-	float FrictionConstant = 0.8f;
-	FVector CurrentVelocity = FVector(0.f,0.f,0.f); 
-	FVector CharacterGravity = FVector(0.f,0.f,-5.f);
+	float FrictionConstant = 0.55f;
+
+	float CharacterMass = 50.f; 
+
+	//Gravity
+	float CharacterGravity = -10.f; //-10
+	float TerminalVelocity = -5.f;
+
+	bool OnGround = false; 
 };

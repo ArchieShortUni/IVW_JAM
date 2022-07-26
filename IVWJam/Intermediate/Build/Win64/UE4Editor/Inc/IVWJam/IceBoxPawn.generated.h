@@ -8,15 +8,26 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FHitResult;
 #ifdef IVWJAM_IceBoxPawn_generated_h
 #error "IceBoxPawn.generated.h already included, missing '#pragma once' in IceBoxPawn.h"
 #endif
 #define IVWJAM_IceBoxPawn_generated_h
 
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_SPARSE_DATA
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_RPC_WRAPPERS
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_RPC_WRAPPERS_NO_PURE_DECLS
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_INCLASS_NO_PURE_DECLS \
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_SPARSE_DATA
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnOverlapBegin);
+
+
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnOverlapBegin);
+
+
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAIceBoxPawn(); \
 	friend struct Z_Construct_UClass_AIceBoxPawn_Statics; \
@@ -25,7 +36,7 @@ public: \
 	DECLARE_SERIALIZER(AIceBoxPawn)
 
 
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_INCLASS \
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_INCLASS \
 private: \
 	static void StaticRegisterNativesAIceBoxPawn(); \
 	friend struct Z_Construct_UClass_AIceBoxPawn_Statics; \
@@ -34,7 +45,7 @@ public: \
 	DECLARE_SERIALIZER(AIceBoxPawn)
 
 
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_STANDARD_CONSTRUCTORS \
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AIceBoxPawn(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AIceBoxPawn) \
@@ -47,7 +58,7 @@ private: \
 public:
 
 
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_ENHANCED_CONSTRUCTORS \
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AIceBoxPawn(AIceBoxPawn&&); \
@@ -58,28 +69,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AIceBoxPawn)
 
 
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_PRIVATE_PROPERTY_OFFSET
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_13_PROLOG
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_GENERATED_BODY_LEGACY \
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_PRIVATE_PROPERTY_OFFSET
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_15_PROLOG
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_PRIVATE_PROPERTY_OFFSET \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_SPARSE_DATA \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_RPC_WRAPPERS \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_INCLASS \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_STANDARD_CONSTRUCTORS \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_PRIVATE_PROPERTY_OFFSET \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_SPARSE_DATA \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_RPC_WRAPPERS \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_INCLASS \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define IVWJam_Source_IVWJam_IceBoxPawn_h_16_GENERATED_BODY \
+#define IVWJam_Source_IVWJam_IceBoxPawn_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_PRIVATE_PROPERTY_OFFSET \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_SPARSE_DATA \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_INCLASS_NO_PURE_DECLS \
-	IVWJam_Source_IVWJam_IceBoxPawn_h_16_ENHANCED_CONSTRUCTORS \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_PRIVATE_PROPERTY_OFFSET \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_SPARSE_DATA \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_INCLASS_NO_PURE_DECLS \
+	IVWJam_Source_IVWJam_IceBoxPawn_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

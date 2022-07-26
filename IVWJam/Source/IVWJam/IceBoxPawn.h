@@ -7,7 +7,9 @@
 #include "GameFramework/Pawn.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
-#include "IceBoxPawnMovementComponent.h" 
+#include "IceBoxPawnMovementComponent.h"
+#include "DrawDebugHelpers.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "IceBoxPawn.generated.h"
 
 UCLASS()
@@ -26,9 +28,33 @@ public:
 	UPROPERTY(EditAnywhere, Category="Components")
 	UBoxComponent* HitBox;
 
+	//Face Hit boxes
+	UPROPERTY(EditAnywhere, Category="Components")
+	UBoxComponent* XPosBox;
+	UPROPERTY(EditAnywhere, Category="Components")
+	UBoxComponent* XNegBox;
+	UPROPERTY(EditAnywhere, Category="Components")
+	UBoxComponent* YPosBox;
+	UPROPERTY(EditAnywhere, Category="Components")
+	UBoxComponent* YNegBox;
+	UPROPERTY(EditAnywhere, Category="Components")
+	UBoxComponent* ZPosBox;
+	UPROPERTY(EditAnywhere, Category="Components")
+	UBoxComponent* ZNegBox;
+
+	UPROPERTY(VisibleAnywhere, Category="Player Variables")
+	float iceLevelZ = 100;
+	
+	UPROPERTY(VisibleAnywhere, Category="Player Variables")
+	float iceLevelX = 100; 
+
 	
 	UPROPERTY()
 	UIceBoxPawnMovementComponent* IceMovementComponent;
+
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 	
 protected:
 	// Called when the game starts or when spawned
@@ -45,6 +71,7 @@ public:
 	
 	void Push(FVector Direction); 
 
+	void Custom_Scale(FVector newScale); 
 	
 private:
 	FVector MovementDirection;
