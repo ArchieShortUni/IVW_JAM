@@ -8,6 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FVector;
 class UPrimitiveComponent;
 class AActor;
 struct FHitResult;
@@ -19,11 +20,13 @@ struct FHitResult;
 #define IVWJam_Source_IVWJam_IceBoxPawn_h_18_SPARSE_DATA
 #define IVWJam_Source_IVWJam_IceBoxPawn_h_18_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execCustomScale); \
 	DECLARE_FUNCTION(execOnOverlapBegin);
 
 
 #define IVWJam_Source_IVWJam_IceBoxPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execCustomScale); \
 	DECLARE_FUNCTION(execOnOverlapBegin);
 
 

@@ -51,8 +51,9 @@ void UIceBoxPawnMovementComponent::TickComponent(float DeltaTime, enum ELevelTic
 			//UE_LOG(LogTemp, Warning, TEXT("%s"),*Hit.GetComponent()->GetOwner()->GetClass()->GetName());
 
 			
-			if(Hit.GetComponent()->GetOwner()->GetClass()->IsChildOf(AIceBoxPawn::StaticClass()))
+			if(Hit.GetComponent()->GetOwner()->GetClass()->IsChildOf(AIceBoxPawn::StaticClass()) && Hit.GetComponent() != UpdatedComponent)
 			{
+				
 				UE_LOG(LogTemp, Warning, TEXT("Is Other Ice"));
 				Cast<AIceBoxPawn>(Hit.GetComponent()->GetOwner())->Push(CurrentVelocity);
 			}
@@ -86,7 +87,9 @@ void UIceBoxPawnMovementComponent::TickComponent(float DeltaTime, enum ELevelTic
 				if(Hit.ImpactNormal == FVector(0.f,0.f,1.0f))
 				{
 					OnGround = true;
-					CurrentVelocity+= FVector(0.f,0.f,1.f)*CharacterAcceleration*DeltaTime*(-CharacterGravity+0.4f);
+					//+= FVector(0.f,0.f,1.f)*-CurrentVelocity.Z*DeltaTime*(-CharacterGravity+3.f);
+					CurrentVelocity+= FVector(0.f,0.f,1.f)*DeltaTime*(-CharacterGravity+1.f);
+
 				}
 			
 			}

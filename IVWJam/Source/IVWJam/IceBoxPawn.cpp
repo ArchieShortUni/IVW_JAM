@@ -73,10 +73,9 @@ AIceBoxPawn::AIceBoxPawn()
 void AIceBoxPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if(OverlappedComp->GetOwner()->GetClass()->IsChildOf(AIceBoxPawn::StaticClass()))
+	if(OverlappedComp->GetOwner()->GetClass()->IsChildOf(AIceBoxPawn::StaticClass())&& OverlappedComp->GetOwner() != this)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("OtherIceCollision"));
-
 	}
 
 }
@@ -97,12 +96,20 @@ void AIceBoxPawn::Tick(float DeltaTime)
 	//Melt
 	const FVector CurrentScale = GetActorScale();
 
-	if(iceLevelZ >= 5 && IceMovementComponent->OnGround == true)
+	if(IceLevelZ >= 10 && IceMovementComponent->OnGround == true && IceMovementComponent->CurrentVelocity.Size() >= 0.1f)
 	{
-		iceLevelZ -= DeltaTime*2;
-		Custom_Scale(FVector(iceLevelZ/100,CurrentScale.Y,CurrentScale.Z));
+		//UE_LOG(LogTemp, Warning, TEXT("Velocity: %f"),IceMovementComponent->CurrentVelocity.Size());
+		
+
+		
+		//iceLevelZ += DeltaTime*10;
+		//iceLevelX -= DeltaTime*4;
+		//iceLevelY += DeltaTime*2;
+	//	CustomScale(FVector(iceLevelX/100,iceLevelY/100,iceLevelZ/100));
 	//	SetActorScale3D(FVector(CurrentScale.X,CurrentScale.Y,CurrentScale.Z));
 	}
+
+	
 	
 	FCollisionQueryParams CollisionParams;
 	
@@ -174,12 +181,48 @@ void AIceBoxPawn::Push(FVector Direction)
 	}
 }
 
-void AIceBoxPawn::Custom_Scale(FVector newScale)
+float AIceBoxPawn::LocationAdjustmentFromScale(float scale)
 {
-	SetActorScale3D(newScale);
-	XPosBox->SetRelativeScale3D(FVector(1/newScale.X,1.f,1.f));
+	if(scale < 1)
+	{
+		return (46+(29*(1-scale)+(7*scale*scale))+(1/(pow(scale,1.28))));
+	}
+	else if (scale > 1 )
+	{
+		return 54.5 - (0.09*scale)-(.22f*scale*scale)-(.005*scale*scale*scale);
+	}
+	else return 54; 
+	
 	
 }
+
+void AIceBoxPawn::CustomScale(FVector newScale)
+{
+	SetActorScale3D(newScale);
+
+	const float XNewLocation = LocationAdjustmentFromScale(newScale.X);
+	const float YNewLocation = LocationAdjustmentFromScale(newScale.Y);
+	const float ZNewLocation = LocationAdjustmentFromScale(newScale.Z);
+	
+	XNegBox->SetRelativeScale3D(FVector(1/newScale.X,1.f,1.f));
+	XNegBox->SetRelativeLocation(FVector(-XNewLocation,0.f,0.f));
+	XPosBox->SetRelativeScale3D(FVector(1/newScale.X,1.f,1.f));
+	XPosBox->SetRelativeLocation(FVector(XNewLocation,0.f,0.f));
+
+	
+	YNegBox->SetRelativeScale3D(FVector(1.f,1/newScale.Y,1.f));
+	YNegBox->SetRelativeLocation(FVector(0.f,-YNewLocation,0.f));
+	YPosBox->SetRelativeScale3D(FVector(1.f,1/newScale.Y,1.f));
+	YPosBox->SetRelativeLocation(FVector(0.f,YNewLocation,0.f));
+
+	ZNegBox->SetRelativeScale3D(FVector(1.f,1.f,1/newScale.Z));
+	ZNegBox->SetRelativeLocation(FVector(0.f,0.f,-ZNewLocation));
+	ZPosBox->SetRelativeScale3D(FVector(1.f,1.f,1/newScale.Z));
+	ZPosBox->SetRelativeLocation(FVector(0.f,0.f,ZNewLocation));
+	
+}
+
+
 
 UPawnMovementComponent* AIceBoxPawn::GetMovementComponent() const
 {

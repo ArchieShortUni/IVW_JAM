@@ -43,11 +43,17 @@ public:
 	UBoxComponent* ZNegBox;
 
 	UPROPERTY(VisibleAnywhere, Category="Player Variables")
-	float iceLevelZ = 100;
+	float IceLevelZ = 100;
 	
 	UPROPERTY(VisibleAnywhere, Category="Player Variables")
-	float iceLevelX = 100; 
+	float IceLevelX = 100;
+	//350 Max limit for now for current hitbox strat
 
+	UPROPERTY(VisibleAnywhere, Category="Player Variables")
+	float IceLevelY = 100;
+
+	UPROPERTY(EditAnywhere, Category="Player Variables")
+	float IceMeltMultiplier = 1.f;
 	
 	UPROPERTY()
 	UIceBoxPawnMovementComponent* IceMovementComponent;
@@ -71,7 +77,10 @@ public:
 	
 	void Push(FVector Direction); 
 
-	void Custom_Scale(FVector newScale); 
+	UFUNCTION(BlueprintCallable)
+	void CustomScale(FVector newScale);
+
+	float LocationAdjustmentFromScale(float scale);
 	
 private:
 	FVector MovementDirection;
