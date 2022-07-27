@@ -224,6 +224,11 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_IceLevelY;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_InHazard_MetaData[];
+#endif
+		static void NewProp_InHazard_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_InHazard;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IceMeltMultiplier_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_IceMeltMultiplier;
@@ -340,6 +345,17 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceLevelY = { "IceLevelY", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AIceBoxPawn, IceLevelY), METADATA_PARAMS(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceLevelY_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceLevelY_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard_MetaData[] = {
+		{ "Category", "Player Variables" },
+		{ "ModuleRelativePath", "IceBoxPawn.h" },
+	};
+#endif
+	void Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard_SetBit(void* Obj)
+	{
+		((AIceBoxPawn*)Obj)->InHazard = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard = { "InHazard", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AIceBoxPawn), &Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard_SetBit, METADATA_PARAMS(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMeltMultiplier_MetaData[] = {
 		{ "Category", "Player Variables" },
 		{ "ModuleRelativePath", "IceBoxPawn.h" },
@@ -365,6 +381,7 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceLevelZ,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceLevelX,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceLevelY,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_InHazard,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMeltMultiplier,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMovementComponent,
 	};
@@ -395,7 +412,7 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AIceBoxPawn, 66323458);
+	IMPLEMENT_CLASS(AIceBoxPawn, 1085706750);
 	template<> IVWJAM_API UClass* StaticClass<AIceBoxPawn>()
 	{
 		return AIceBoxPawn::StaticClass();

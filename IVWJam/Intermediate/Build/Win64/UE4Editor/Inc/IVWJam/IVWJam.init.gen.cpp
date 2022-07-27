@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeIVWJam_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xC850FC52,
+				0xBA5E6882,
 				0x28AEA1C6,
 				METADATA_PARAMS(nullptr, 0)
 			};

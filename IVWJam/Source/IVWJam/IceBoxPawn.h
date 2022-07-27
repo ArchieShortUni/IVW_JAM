@@ -52,8 +52,12 @@ public:
 	UPROPERTY(VisibleAnywhere, Category="Player Variables")
 	float IceLevelY = 100;
 
+	UPROPERTY(VisibleAnywhere, Category="Player Variables")
+	bool InHazard = false;
+
 	UPROPERTY(EditAnywhere, Category="Player Variables")
-	float IceMeltMultiplier = 1.f;
+	float IceMeltMultiplier = 2.f;
+
 	
 	UPROPERTY()
 	UIceBoxPawnMovementComponent* IceMovementComponent;
