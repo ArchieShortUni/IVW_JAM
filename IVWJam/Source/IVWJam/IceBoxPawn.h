@@ -55,8 +55,11 @@ public:
 	UPROPERTY(VisibleAnywhere, Category="Player Variables")
 	bool InHazard = false;
 
+	UPROPERTY(VisibleAnywhere, Category="Player Variables")
+	bool InCold= false;
+
 	UPROPERTY(EditAnywhere, Category="Player Variables")
-	float IceMeltMultiplier = 2.f;
+	float IceMeltMultiplier = 4.f; // 2
 
 	
 	UPROPERTY()
@@ -85,7 +88,12 @@ public:
 	void CustomScale(FVector newScale);
 
 	float LocationAdjustmentFromScale(float scale);
-	
+
+	UFUNCTION(BlueprintCallable)
+	FVector GetIceVelocity();
+
+	UFUNCTION(BlueprintCallable)
+	void SetIceVelocity(FVector newVelocity);
 private:
 	FVector MovementDirection;
 

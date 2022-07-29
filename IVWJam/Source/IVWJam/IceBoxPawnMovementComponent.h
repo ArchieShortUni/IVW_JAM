@@ -19,8 +19,10 @@ public:
 	FVector CurrentVelocity = FVector(0.f,0.f,0.f);
 	
 	float CharacterAcceleration = 3.3f;
+	//To implement terminal velocity of horizontal movement
 	float MaxMovementSpeed = 1000.f;
-	float FrictionConstant = 0.9f; //0.55f
+	
+	float FrictionConstant = 0.6f; //0.55f
 
 	float CharacterMass = 50.f; 
 
@@ -28,5 +30,7 @@ public:
 	float CharacterGravity = -10.f; //-10
 	float TerminalVelocity = -5.f;
 
-	bool OnGround = false; 
+	bool OnGround = false;
+	bool SlidingAgainstWall = false;
+	FVector LastWallDirection = FVector(0,1,0);
 };

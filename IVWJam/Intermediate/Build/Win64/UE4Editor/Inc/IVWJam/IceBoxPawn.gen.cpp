@@ -25,6 +25,21 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	IVWJAM_API UClass* Z_Construct_UClass_UIceBoxPawnMovementComponent_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(AIceBoxPawn::execSetIceVelocity)
+	{
+		P_GET_STRUCT(FVector,Z_Param_newVelocity);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetIceVelocity(Z_Param_newVelocity);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AIceBoxPawn::execGetIceVelocity)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FVector*)Z_Param__Result=P_THIS->GetIceVelocity();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AIceBoxPawn::execCustomScale)
 	{
 		P_GET_STRUCT(FVector,Z_Param_newScale);
@@ -51,7 +66,9 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 		UClass* Class = AIceBoxPawn::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "CustomScale", &AIceBoxPawn::execCustomScale },
+			{ "GetIceVelocity", &AIceBoxPawn::execGetIceVelocity },
 			{ "OnOverlapBegin", &AIceBoxPawn::execOnOverlapBegin },
+			{ "SetIceVelocity", &AIceBoxPawn::execSetIceVelocity },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -84,6 +101,38 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AIceBoxPawn_CustomScale_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics
+	{
+		struct IceBoxPawn_eventGetIceVelocity_Parms
+		{
+			FVector ReturnValue;
+		};
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(IceBoxPawn_eventGetIceVelocity_Parms, ReturnValue), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "IceBoxPawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AIceBoxPawn, nullptr, "GetIceVelocity", nullptr, nullptr, sizeof(IceBoxPawn_eventGetIceVelocity_Parms), Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04820401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -168,6 +217,38 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics
+	{
+		struct IceBoxPawn_eventSetIceVelocity_Parms
+		{
+			FVector newVelocity;
+		};
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_newVelocity;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::NewProp_newVelocity = { "newVelocity", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(IceBoxPawn_eventSetIceVelocity_Parms, newVelocity), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::NewProp_newVelocity,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "IceBoxPawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AIceBoxPawn, nullptr, "SetIceVelocity", nullptr, nullptr, sizeof(IceBoxPawn_eventSetIceVelocity_Parms), Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04820401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AIceBoxPawn_NoRegister()
 	{
 		return AIceBoxPawn::StaticClass();
@@ -246,7 +327,9 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AIceBoxPawn_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AIceBoxPawn_CustomScale, "CustomScale" }, // 3411618193
+		{ &Z_Construct_UFunction_AIceBoxPawn_GetIceVelocity, "GetIceVelocity" }, // 3951857085
 		{ &Z_Construct_UFunction_AIceBoxPawn_OnOverlapBegin, "OnOverlapBegin" }, // 1754435220
+		{ &Z_Construct_UFunction_AIceBoxPawn_SetIceVelocity, "SetIceVelocity" }, // 1657816162
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AIceBoxPawn_Statics::Class_MetaDataParams[] = {
@@ -364,8 +447,10 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMeltMultiplier = { "IceMeltMultiplier", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AIceBoxPawn, IceMeltMultiplier), METADATA_PARAMS(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMeltMultiplier_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMeltMultiplier_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMovementComponent_MetaData[] = {
+		{ "Comment", "// 2\n" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "IceBoxPawn.h" },
+		{ "ToolTip", "2" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMovementComponent = { "IceMovementComponent", nullptr, (EPropertyFlags)0x0010000000080008, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AIceBoxPawn, IceMovementComponent), Z_Construct_UClass_UIceBoxPawnMovementComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMovementComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AIceBoxPawn_Statics::NewProp_IceMovementComponent_MetaData)) };
@@ -412,7 +497,7 @@ void EmptyLinkFunctionForGeneratedCodeIceBoxPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AIceBoxPawn, 1085706750);
+	IMPLEMENT_CLASS(AIceBoxPawn, 3768814382);
 	template<> IVWJAM_API UClass* StaticClass<AIceBoxPawn>()
 	{
 		return AIceBoxPawn::StaticClass();

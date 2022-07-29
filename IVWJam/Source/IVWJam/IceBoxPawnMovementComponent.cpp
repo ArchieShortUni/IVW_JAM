@@ -15,14 +15,15 @@ void UIceBoxPawnMovementComponent::TickComponent(float DeltaTime, enum ELevelTic
 	{
 		return;
 	}
-
+	
 	//Accelerate in chosen direction (if no input it will be adding 0)
 	CurrentVelocity += ConsumeInputVector().GetClampedToMaxSize(1.0f) * DeltaTime * CharacterAcceleration;
-
+	
 	//Apply friction 
 	CurrentVelocity *= std::pow(FrictionConstant, DeltaTime);
 
-	 
+	//Clamp to max speed 
+	CurrentVelocity = CurrentVelocity.GetClampedToMaxSize(10.f);
 	
 	//Apply Gravity 
 	if(CurrentVelocity.Z >= TerminalVelocity && !OnGround)
@@ -30,13 +31,8 @@ void UIceBoxPawnMovementComponent::TickComponent(float DeltaTime, enum ELevelTic
 		CurrentVelocity += FVector(0.f,0.f,CharacterGravity*DeltaTime);
 	}
 	
-	
-
-	
 	//UE_LOG(LogTemp, Warning, TEXT("Is Falling %hs"),IsFalling()? "true" : "false" );
 	// Get (and then clear) the movement vector that we set in ACollidingPawn::Tick
-
-	
 	FVector DesiredMovementThisFrame = CurrentVelocity;
 	if (!DesiredMovementThisFrame.IsNearlyZero())
 	{
@@ -55,59 +51,38 @@ void UIceBoxPawnMovementComponent::TickComponent(float DeltaTime, enum ELevelTic
 			{
 				
 				UE_LOG(LogTemp, Warning, TEXT("Is Other Ice"));
+				//Add slightly random rotation 
+				//float rotation = FMath::RandRange(-15,15);
+				//	FVector newDirection = FVector((cos(rotation)*CurrentVelocity.X)-(sin(rotation)*CurrentVelocity.Y),(sin(rotation)*CurrentVelocity.X)+(sin(rotation)*CurrentVelocity.Y),0.f);
 				Cast<AIceBoxPawn>(Hit.GetComponent()->GetOwner())->Push(CurrentVelocity);
+				
+
 			}
 			
 			else
 			{
-
-
-
-				//if(Hit.Time > 0 )
-				//{
-				//	float F = CharacterMass * CharacterAcceleration;
-					
-				//	float impusle = F * Hit.Time;
-				//	float TempLength;
-				//	FVector VelocityDirection;
-				//	CurrentVelocity.ToDirectionAndLength(VelocityDirection,TempLength);
-				//	CurrentVelocity -= CurrentVelocity; 
-				//UE_LOG(LogTemp, Warning, TEXT("%s"),*VelocityDirection.ToString());
-				//	UE_LOG(LogTemp, Warning, TEXT("%f"),Hit.Time);
-
-				//} 
-
-
-				//	FVector NextPosition = GetActorLocation() + Hit.Normal * moved;
-				//FVector Direction = NextPosition - GetActorLocation();
-
-				//	CurrentVelocity = Direction * CurrentVelocity.Size();
-				//	CurrentVelocity += -Hit.Normal * CurrentVelocity.Size();
-			
+				//Handle Opposite reaction Collisions, tried two methods for gravity and horizontal collisions 
 				if(Hit.ImpactNormal == FVector(0.f,0.f,1.0f))
 				{
 					OnGround = true;
-					//+= FVector(0.f,0.f,1.f)*-CurrentVelocity.Z*DeltaTime*(-CharacterGravity+3.f);
 					CurrentVelocity+= FVector(0.f,0.f,1.f)*DeltaTime*(-CharacterGravity+1.f);
 
 				}
-			
+				else
+				{
+					SlidingAgainstWall = true;
+					LastWallDirection = FVector(1,1,1) - Hit.ImpactNormal.GetAbs();
+					CurrentVelocity *= LastWallDirection;
+				}
 			}
-			//FHitResult SlideHit;
-			
-			//FVector newDirection = ComputeSlideVector(DesiredMovementThisFrame,1.f-Hit.Time,Hit.Normal,SlideHit);
 
-			//FVector newMotion = newDirection * (FVector::DotProduct(DesiredMovementThisFrame,newDirection));
-			//CurrentVelocity = CurrentVelocity - newMotion;
-
-			
+			//Actual movement against a wall and surface
 			float moved = SlideAlongSurface(CurrentVelocity, 1.f - Hit.Time, Hit.Normal, Hit);
-			CurrentVelocity -= .95f * CurrentVelocity * DeltaTime * Hit.Normal;
+			//Extra friction as its against multiple surfaces 
 			CurrentVelocity *= std::pow(FrictionConstant, DeltaTime);
-
 			
-			//CurrentVelocity = newDirection * CurrentVelocity.Size() * DeltaTime; 
 		}
+		else{SlidingAgainstWall = false; }
 		
 		//	UE_LOG(LogTemp, Warning, TEXT("Impact Normal Of Hit: %s"),*Hit.ImpactNormal.ToString());
 

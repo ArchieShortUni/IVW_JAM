@@ -94,62 +94,90 @@ void AIceBoxPawn::Tick(float DeltaTime)
 	
 	//Shoot out 4 Line traces per tick on all 4 corners to see if we are currently on a surface. If so we are on the ground and dont apply gravitational force 
 	//Melt
-	const FVector CurrentScale = GetActorScale();
-
-	if(IceLevelZ >= 10 && IceMovementComponent->OnGround == true && IceMovementComponent->CurrentVelocity.Size() >= 0.1f)
+	if (IceMovementComponent && (IceMovementComponent->UpdatedComponent == RootComponent))
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("Velocity: %f"),IceMovementComponent->CurrentVelocity.Size());
-		IceLevelZ -= DeltaTime * IceMeltMultiplier; 
-		
-	}
-	//If in a hazard
-	if(IceLevelZ >= 10 && IceMovementComponent->OnGround == true && InHazard)
-	{
-		IceLevelZ -= DeltaTime * IceMeltMultiplier*2; 
-	}
-	
-	CustomScale(FVector(IceLevelX/100,IceLevelY/100,IceLevelZ/100));
+		const FVector CurrentScale = GetActorScale();
 
-	
-	
-	FCollisionQueryParams CollisionParams;
-	
-	TArray<AActor*> FoundActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AIceBoxPawn::StaticClass(), FoundActors);
-	CollisionParams.AddIgnoredActors(FoundActors);
-	
-	std::vector<FVector> CornerDirections = {
-		FVector(1.f,1.f,1.f),
-		FVector(1.f,-1.f,1.f),
-		FVector(-1.f,1.f,1.f),
-		FVector(-1.f,-1.f,1.f),
-	};
-
-	bool hitGround = false;
-	InHazard = false;
-	for(int i =0; i<=3; i++)
-	{
-		FHitResult Corner;
-		FVector StartL = GetActorLocation() - (CurrentScale*50*CornerDirections.at(i)); 
-		FVector EndL = StartL + FVector(0.f,0.f,-300.f);
-		DrawDebugLine(GetWorld(), StartL, EndL, FColor::Blue, false, DeltaTime+0.001f, 0, 2);
-		
-		if(GetWorld()->LineTraceSingleByChannel(Corner, StartL, EndL, ECC_WorldStatic, CollisionParams))
+		if(IceLevelZ >= 10 && IceMovementComponent->OnGround == true && IceMovementComponent->CurrentVelocity.Size() >= 0.1f)
 		{
-			if(Corner.Distance < .005f){hitGround = true; }
-			//Change to proper material name. 
-			if(Corner.Component->GetMaterial(0)->GetName() == "HotSpotMaterialTemp")
+			//UE_LOG(LogTemp, Warning, TEXT("Velocity: %f"),IceMovementComponent->CurrentVelocity.Size());
+			IceLevelZ -= DeltaTime * IceMeltMultiplier; 
+		
+		}
+		//If in a hazard
+		if(IceLevelZ >= 10 && IceMovementComponent->OnGround == true && InHazard)
+		{
+			IceLevelZ -= DeltaTime * IceMeltMultiplier*2;
+			IceLevelY -= DeltaTime * IceMeltMultiplier*2;
+			IceLevelX -= DeltaTime * IceMeltMultiplier*2;
+		}
+
+		if(IceMovementComponent->SlidingAgainstWall == true)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Direction: %s"),*IceMovementComponent->LastWallDirection.ToString());
+
+			if(IceMovementComponent->LastWallDirection == FVector(1,0,1) && IceLevelY >= 10)
 			{
-				InHazard= true;
-				
-				
-				UE_LOG(LogTemp, Warning, TEXT("IN A HAZARD"));
+				IceLevelY -= DeltaTime * IceMeltMultiplier*3.f;
 			}
-			//UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"),*Corner.Component->GetMaterial(0)->GetName());
+			else if(IceLevelX >= 10){
+				IceLevelX -= DeltaTime * IceMeltMultiplier*3.f;
+
+			}
+		}
+
+		//UE_LOG(LogTemp, Warning, TEXT("Is Sliding %hs"),IceMovementComponent->SlidingAgainstWall? "true" : "false" );
+		//UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"),*IceMovementComponent->CurrentVelocity.ToString());
+
+	
+		CustomScale(FVector(IceLevelX/100,IceLevelY/100,IceLevelZ/100));
+
+	
+	
+		FCollisionQueryParams CollisionParams;
+	
+		TArray<AActor*> FoundActors;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AIceBoxPawn::StaticClass(), FoundActors);
+		CollisionParams.AddIgnoredActors(FoundActors);
+	
+		std::vector<FVector> CornerDirections = {
+			FVector(1.f,1.f,1.f),
+			FVector(1.f,-1.f,1.f),
+			FVector(-1.f,1.f,1.f),
+			FVector(-1.f,-1.f,1.f),
+		};
+
+		bool hitGround = false;
+		InHazard = false;
+		InCold = false; 
+		for(int i =0; i<=3; i++)
+		{
+			FHitResult Corner;
+			FVector StartL = GetActorLocation() - (CurrentScale*50*CornerDirections.at(i)); 
+			FVector EndL = StartL + FVector(0.f,0.f,-300.f);
+			DrawDebugLine(GetWorld(), StartL, EndL, FColor::Blue, false, DeltaTime+0.001f, 0, 2);
+		
+			if(GetWorld()->LineTraceSingleByChannel(Corner, StartL, EndL, ECC_WorldStatic, CollisionParams))
+			{
+				if(Corner.Distance < .005f){hitGround = true; }
+				//Change to proper material name. 
+				if(Corner.Component->GetMaterial(0)->GetName() == "HotSpotMaterialTemp")
+				{
+					InHazard= true;
+				
+				
+					//UE_LOG(LogTemp, Warning, TEXT("IN A HAZARD"));
+				}
+				else if(Corner.Component->GetMaterial(0)->GetName() == "ColdSpotMaterial")
+				{
+					InCold = true; 
+				}
+				//UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"),*Corner.Component->GetMaterial(0)->GetName());
 
 			
-		}}
-	IceMovementComponent->OnGround = hitGround;
+			}}
+		IceMovementComponent->OnGround = hitGround;
+	}
 
 }
 
@@ -208,6 +236,24 @@ float AIceBoxPawn::LocationAdjustmentFromScale(float scale)
 	
 	
 }
+
+FVector AIceBoxPawn::GetIceVelocity()
+{
+	if (IceMovementComponent && (IceMovementComponent->UpdatedComponent == RootComponent))
+	{
+		return IceMovementComponent->CurrentVelocity;
+	}
+	else return FVector(0.f,0.f,0.f);
+}
+
+void AIceBoxPawn::SetIceVelocity(FVector newVelocity)
+{
+	if (IceMovementComponent && (IceMovementComponent->UpdatedComponent == RootComponent))
+	{
+		 IceMovementComponent->CurrentVelocity = newVelocity;
+	}
+}
+
 
 void AIceBoxPawn::CustomScale(FVector newScale)
 {
