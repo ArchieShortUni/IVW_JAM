@@ -20,7 +20,7 @@ public:
 	
 	float CharacterAcceleration = 3.3f;
 	float MaxMovementSpeed = 1000.f;
-	float FrictionConstant = 0.55f;
+	float FrictionConstant = 0.9f; //0.55f
 
 	float CharacterMass = 50.f; 
 

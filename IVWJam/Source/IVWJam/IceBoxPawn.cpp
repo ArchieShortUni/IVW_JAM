@@ -213,6 +213,11 @@ void AIceBoxPawn::CustomScale(FVector newScale)
 {
 	SetActorScale3D(newScale);
 
+	IceLevelZ = newScale.Z * 100;
+	IceLevelX = newScale.X * 100;
+	IceLevelY = newScale.Y * 100;
+
+
 	const float XNewLocation = LocationAdjustmentFromScale(newScale.X);
 	const float YNewLocation = LocationAdjustmentFromScale(newScale.Y);
 	const float ZNewLocation = LocationAdjustmentFromScale(newScale.Z);
